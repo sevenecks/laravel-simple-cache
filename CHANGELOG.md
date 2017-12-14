@@ -1,3 +1,7 @@
+## 0.0.7 - 2017-12-14 01:17pm
+
+- Updated example in readme file
+
 ## 0.0.6 - 2017-12-14 11:37am
 
 - Fixed missing $
