@@ -23,6 +23,7 @@ class SimpleCache
 {
      // prefix for the cache key to namespace it
     public static $cache_key_prefix = 'simple-cache-';
+
     // text to tag the cache with by default
     public static $cache_tag = '<!-- cache -->';
 
