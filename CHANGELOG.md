@@ -1,3 +1,7 @@
+## 0.0.6 - 2017-12-14 11:37am
+
+- Fixed missing $
+
 ## 0.0.5 - 2017-12-14 10:44am
 
 - Repushing release

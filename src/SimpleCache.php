@@ -34,7 +34,7 @@ class SimpleCache
      */
     public static function getCached(string $cache_key, bool $tag_cached_content = true)
     {
-        $cache_key = self::buildCacheKey(self::cache_key_prefix, $cache_key);
+        $cache_key = self::buildCacheKey(self::$cache_key_prefix, $cache_key);
         if (Config::get('app.cacheDisabled') || !Cache::has($cache_key)) {
             return false;
         }
@@ -64,7 +64,7 @@ class SimpleCache
      */
     public static function setCache(string $cache_key, string $content, int $minutes_to_live = -1)
     {
-        $cache_key = self::buildCacheKey(self::cache_key_prefix, $cache_key);
+        $cache_key = self::buildCacheKey(self::$cache_key_prefix, $cache_key);
         if ($minutes_to_live == -1) {
             return Cache::forever($cache_key, $content);
         } else {
