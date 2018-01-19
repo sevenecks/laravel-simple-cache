@@ -8,23 +8,33 @@ composer require sevenecks/laravel-simple-cache
 
 ## Usage
 ```php
-/**
- * Gets the contact page from cache or renders it and saves to cache 
- * before returning
- *
- * @return string view
- */
-public function contact()
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use SevenEcks\LaravelSimpleCache\SimpleCache;
+
+class PageController extends Controller
 {
-    $view_name = 'contact';
-    // check if we have a cached view
-    if (!($view_content = SimpleCache::getCached($view_name))) {
-        $view_content = view($view_name);
-        // now let's cache our new view
-        SimpleCache::setCache($view_name, $view_content->render());
+    /**
+     * Gets the contact page from cache or renders it and saves to cache 
+     * before returning
+     *
+     * @return string view
+     */
+    public function contact()
+    {
+        $view_name = 'contact';
+        // check if we have a cached view
+        if (!($view_content = SimpleCache::getCached($view_name))) {
+            $view_content = view($view_name);
+            // now let's cache our new view
+            SimpleCache::setCache($view_name, $view_content->render());
+        }
+        // return the view either from cache or the newly created one
+        return $view_content;
     }
-    // return the view either from cache or the newly created one
-    return $view_content;
 }
 ```
 
@@ -51,12 +61,6 @@ You would replace the CSRF token with some placeholder text.
 Next, you would update your caching code to look something like this:
 
 ```php
-/**
- * Gets the contact page from cache or renders it and saves to cache 
- * before returning
- *
- * @return string view
- */
 public function contact()
 {
     $view_name = 'contact';
