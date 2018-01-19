@@ -28,7 +28,10 @@ class SimpleCache
     public static $cache_tag = '<!-- cache -->';
 
     /**
-     * Returns cached item by key if caching is enabled
+     * Returns cached item by key if caching is enabled. If $tag_cached_content is
+     * true then the the $cache_tag will be applied to the end of the content after 
+     * it is pulled from the cache.
+     *
      * @param  string $cache_key
      * @return mixed false if cache is disabled or not present, string if it exists.
      */
@@ -43,7 +46,7 @@ class SimpleCache
 
     /**
      * Concatinates the prefix plus dash with suffix to create the cache key
-     * namespace
+     * namespace.
      *
      * @param  string $prefix
      * @param  string $suffix
@@ -55,7 +58,7 @@ class SimpleCache
     }
 
     /**
-     * Sets the cached content
+     * Sets the cached content. $minutes_to_live set to -1 will live forever.
      *
      * @param  string $cache_key
      * @param  string $content

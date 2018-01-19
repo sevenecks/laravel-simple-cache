@@ -1,3 +1,7 @@
+## 0.0.8 - 2018-01-19 12:57PM
+
+- Updated docblock comments
+
 ## 0.0.7 - 2017-12-14 01:17pm
 
 - Updated example in readme file
