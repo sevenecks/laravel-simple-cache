@@ -106,7 +106,7 @@ public static function getCached(string $cache_key, bool $tag_cached_content = t
  */
 public static function buildCacheKey(string $prefix, string $suffix = '')
 
-    /**
+/**
  * Sets the cached content. $minutes_to_live set to -1 will live forever.
  *
  * @param  string $cache_key
@@ -116,7 +116,7 @@ public static function buildCacheKey(string $prefix, string $suffix = '')
  */
 public static function setCache(string $cache_key, string $content, int $minutes_to_live = -1)
 
-    /**
+/**
  * Clear the entire cache
  *
  * @return none
