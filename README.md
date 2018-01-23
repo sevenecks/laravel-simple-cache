@@ -107,6 +107,24 @@ public static function getCached(string $cache_key, bool $tag_cached_content = t
 public static function buildCacheKey(string $prefix, string $suffix = '')
 
 /**
+ * Overwrite the static cache key prefix string with a user
+ * provided string for customization purporses.
+ *
+ * @param string $new_prefix
+ * @return none
+ */
+public static function setCacheKeyPrefix(string $new_prefix)
+
+/**
+ * Overwrite the static cache tag string with a user
+ * provided string for customization purposes.
+ *
+ * @param string $new_tag
+ * @return none
+ */
+public static function setCacheTag(string $new_tag)
+
+/**
  * Sets the cached content. $minutes_to_live set to -1 will live forever.
  *
  * @param  string $cache_key

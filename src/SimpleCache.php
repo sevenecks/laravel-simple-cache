@@ -22,10 +22,10 @@ use Config;
 class SimpleCache
 {
      // prefix for the cache key to namespace it
-    public static $cache_key_prefix = 'simple-cache-';
+    protected static $cache_key_prefix = 'simple-cache-';
 
     // text to tag the cache with by default
-    public static $cache_tag = '<!-- cache -->';
+    protected static $cache_tag = '<!-- cache -->';
 
     /**
      * Returns cached item by key if caching is enabled. If $tag_cached_content is
@@ -37,11 +37,11 @@ class SimpleCache
      */
     public static function getCached(string $cache_key, bool $tag_cached_content = true)
     {
-        $cache_key = self::buildCacheKey(self::$cache_key_prefix, $cache_key);
+        $cache_key = static::buildCacheKey(static::$cache_key_prefix, $cache_key);
         if (Config::get('app.cacheDisabled') || !Cache::has($cache_key)) {
             return false;
         }
-        return Cache::get($cache_key) . ($tag_cached_content ? self::$cache_tag : '');
+        return Cache::get($cache_key) . ($tag_cached_content ? static::$cache_tag : '');
     }
 
     /**
@@ -52,9 +52,33 @@ class SimpleCache
      * @param  string $suffix
      * @return string
      */
-    public static function buildCacheKey(string $prefix, string $suffix = '')
+    protected static function buildCacheKey(string $prefix, string $suffix = '')
     {
         return $prefix . "-" . $suffix;
+    }
+
+    /**
+     * Overwrite the static cache key prefix string with a user
+     * provided string for customization purporses.
+     *
+     * @param string $new_prefix
+     * @return none
+     */
+    public static function setCacheKeyPrefix(string $new_prefix)
+    {
+        static::$cache_key_prefix = $new_prefix;
+    }
+
+    /**
+     * Overwrite the static cache tag string with a user
+     * provided string for customization purposes.
+     *
+     * @param string $new_tag
+     * @return none
+     */
+    public static function setCacheTag(string $new_tag)
+    {
+        static::$cache_tag = $new_tag;
     }
 
     /**
@@ -67,7 +91,7 @@ class SimpleCache
      */
     public static function setCache(string $cache_key, string $content, int $minutes_to_live = -1)
     {
-        $cache_key = self::buildCacheKey(self::$cache_key_prefix, $cache_key);
+        $cache_key = static::buildCacheKey(static::$cache_key_prefix, $cache_key);
         if ($minutes_to_live == -1) {
             return Cache::forever($cache_key, $content);
         } else {
