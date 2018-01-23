@@ -116,6 +116,13 @@ public static function buildCacheKey(string $prefix, string $suffix = '')
 public static function setCacheKeyPrefix(string $new_prefix)
 
 /**
+ * Get the current $cache_key_prefix variable
+ *
+ * @return string
+ */
+public static function getCacheKeyPrefix()
+
+/**
  * Overwrite the static cache tag string with a user
  * provided string for customization purposes.
  *
@@ -123,6 +130,13 @@ public static function setCacheKeyPrefix(string $new_prefix)
  * @return none
  */
 public static function setCacheTag(string $new_tag)
+
+/**
+ * Get the current $cache_tag static varible
+ *
+ * @return string
+ */
+public static function getCacheTag()
 
 /**
  * Sets the cached content. $minutes_to_live set to -1 will live forever.

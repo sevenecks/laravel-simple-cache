@@ -70,8 +70,20 @@ class SimpleCache
     }
 
     /**
+     * Get the current $cache_key_prefix variable
+     *
+     * @return string
+     */
+    public static function getCacheKeyPrefix()
+    {
+        return static::$cache_key_prefix;
+    }
+
+    /**
      * Overwrite the static cache tag string with a user
-     * provided string for customization purposes.
+     * provided string for customization purposes. If you do not
+     * want it to show up in your HTML you should use html comments
+     * around your new cache tag.
      *
      * @param string $new_tag
      * @return none
@@ -79,6 +91,16 @@ class SimpleCache
     public static function setCacheTag(string $new_tag)
     {
         static::$cache_tag = $new_tag;
+    }
+
+    /**
+     * Get the current $cache_tag static varible
+     *
+     * @return string
+     */
+    public static function getCacheTag()
+    {
+        return static::$cache_tag;
     }
 
     /**

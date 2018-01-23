@@ -1,6 +1,7 @@
 ## 0.0.9 - 2018-01-22 3:18PM
 
 - Added static methods for setting cache_tag and cache_key_prefix
+- Added static methods for getting cache_tag and cache_key_prefix
 - Changed buildCacheKey to a protected method since it shouldn't be called from outside the class
 - Updated Changelog
 - Updated ReadMe
